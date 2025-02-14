@@ -13,12 +13,13 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
-import static com.demo.constant.Constants.THIRD_PARTY;
 
 @Aspect
 @Component
@@ -26,14 +27,11 @@ import static com.demo.constant.Constants.THIRD_PARTY;
 @EnableAsync
 public class LoggingConfiguration {
 
-    /* 
+    
     
     @Async
-    @AfterReturning(
-            pointcut = "execution(*com.demo.dto.response.EmployeeResponse(..))",
-            returning = "result"
-    )
-   public void logSabreTransaction(JoinPoint joinPoint, EmployerRequest result) {
+    @Pointcut("execution(* com.demo.service.impl.*.findAll(..))")
+   public void logTransaction(JoinPoint joinPoint, EmployerRequest result) {
         Object[] params = joinPoint.getArgs();
         CustomerDTO validCustomerDTO = (CustomerDTO) params[3];
 
@@ -44,14 +42,12 @@ public class LoggingConfiguration {
                 .build()
                 .getTransactionLog())
         );
+  
     }
 
-    }*/
-	  /*    @Async
-    @AfterThrowing(
-    	    pointcut = "execution(*com.demo.dto.response.EmployeeResponse(..))",
-            throwing = "ex"
-    )
+   
+	      @Async
+	      @Pointcut("execution(* com.demo.service.impl.*.findAll(..))")
     public void logSabreException(JoinPoint joinPoint, Exception ex) {
         Object[] params = joinPoint.getArgs();
         CustomerDTO validCustomerDTO = (CustomerDTO) params[3];
@@ -61,7 +57,7 @@ public class LoggingConfiguration {
    log.error(StringUtils.normalizeSpace(LogStructure.builder()
                 .exceptionMessage(ex.getMessage())
                 .build()
-                .getExceptionLog())
-        )
-    };*/
+                .getExceptionLog()));
+
+    };
 }

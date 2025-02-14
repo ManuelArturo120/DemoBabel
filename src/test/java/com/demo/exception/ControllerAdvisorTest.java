@@ -36,14 +36,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static com.demo.constant.Constants.CHANNEL;
-import static com.demo.constant.Constants.CONTENT_TYPE;
-import static com.demo.constant.Constants.FLOW;
 
-import static com.demo.constant.Constants.PNR;
-import static com.demo.constant.Constants.STORE;
+
+
 import static com.demo.constant.Constants.STRING_EMPTY;
-import static com.demo.constant.Constants.X_TRANSACTION_ID;
+
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -98,81 +95,12 @@ class ControllerAdvisorTest {
     private MockHttpServletRequest getHttpServletRequest(){
 
         MockHttpServletRequest request = new MockHttpServletRequest();
-        request.addHeader(CONTENT_TYPE, "application/json");
-        request.addHeader(CHANNEL, "WEB");
-        request.addHeader(FLOW, "myb");
-        request.addHeader(X_TRANSACTION_ID, "ff978146-e8d5-46f7-ab47-3b35387299b4");
-        request.addHeader(STORE, "mx");
-        request.addHeader(PNR , "PVLRKP");
+
 
         return request;
     }
 
-    
-/*
-    @Test
-    void testServiceUnavailableDueToSabreDisconnection() throws Exception {
 
-        String jsonRequest = UtilTest.getJsonToString("/request/RQ2.json");
-        Gson gson = new Gson();
-        GetAncillaryOffersRQ getAncillaryOffersRQ = gson.fromJson(jsonRequest, GetAncillaryOffersRQ.class);
-        getAncillaryOffersRQ.setQueryByItinerary(new GetAncillaryOffersRQ.QueryByItinerary());
-        CustomerDTO customerDTO = new CustomerDTO("web", "MYB" , "abc65970-5152-4dbb-8c1d-2661a4c2c054", "mx", "VIZUJK");
-        doThrow(new SabreDisconnectionException(new Exception(), STRING_EMPTY, STRING_EMPTY)).when(ancillaryOfferService).getAncillaryOffersRS(getAncillaryOffersRQ, getAncillaryOffersRQ.getClientContext().getCityCode(), CITY_COMMAND, customerDTO);
-
-        mockMvc.perform(post("/ab/ancillary/offer")
-                        .header("flow", "MYB")
-                        .header("pnr", "VIZUJK")
-                        .header("store", "mx")
-                        .header("x-transactionId", "abc65970-5152-4dbb-8c1d-2661a4c2c054")
-                        .header("Content-Type", "application/json;charset=UTF-8")
-                        .header("channel", "web"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.channel").value("web"))
-                .andExpect(jsonPath("$.reason").value("ERR.AB.ANCILLARY.OFFER.BAD_REQUEST"))
-                .andExpect(jsonPath("$.httpCode").value("400"));
-    }
-
-    @Test
-    void testUnauthorizedDueToAuthenticationFailure() throws Exception {
-        String jsonRequest = UtilTest.getJsonToString("/request/RQ2.json");
-        Gson gson = new Gson();
-        GetAncillaryOffersRQ getAncillaryOffersRQ = gson.fromJson(jsonRequest, GetAncillaryOffersRQ.class);
-        getAncillaryOffersRQ.setQueryByItinerary(new GetAncillaryOffersRQ.QueryByItinerary());
-        CustomerDTO customerDTO = new CustomerDTO("web", "MYB" , "abc65970-5152-4dbb-8c1d-2661a4c2c054", "mx", "VIZUJK");
-
-        doThrow(new AuthenticationFailedException(new Exception("Authentication failed"))).when(ancillaryOfferService).getAncillaryOffersRS(getAncillaryOffersRQ, getAncillaryOffersRQ.getClientContext().getCityCode(), CITY_COMMAND, customerDTO);
-
-        mockMvc.perform(post("/ab/ancillary/offer")
-                        .header("flow", "MYB")
-                        .header("pnr", "VIZUJK")
-                        .header("store", "mx")
-                        .header("x-transactionId", "abc65970-5152-4dbb-8c1d-2661a4c2c054")
-                        .header("Content-Type", "application/json;charset=UTF-8")
-                        .header("channel", "web"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.channel").value("web"))
-                .andExpect(jsonPath("$.reason").value("ERR.AB.ANCILLARY.OFFER.BAD_REQUEST"))
-                .andExpect(jsonPath("$.httpCode").value("400"));
-    }
- @Test
-    void testInternalServerErrorDueToServerErrorException() throws Exception {
-          given(service.findALL())
-                .willThrow(new ServerErrorException(STRING_EMPTY, new Exception()));
-
-        mockMvc.perform(post("/getEmployed")
-                        .header("flow", "MYB")
-                        .header("pnr", "VIZUJK")
-                        .header("store", "mx")
-                        .header("x-transactionId", "abc65970-5152-4dbb-8c1d-2661a4c2c054")
-                        .header("Content-Type", "application/json;charset=UTF-8")
-                        .header("channel", "web"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.channel").value("web"))
-                .andExpect(jsonPath("$.reason").value("ERR.BAD_REQUEST"))
-                .andExpect(jsonPath("$.httpCode").value("400"));
-    }
-*/
    
 }
 

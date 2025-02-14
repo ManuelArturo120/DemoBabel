@@ -1,7 +1,7 @@
 package com.demo.utils;
 
 
-import com.demo.configuration.ApplicationProperties;
+
 import com.demo.dto.request.EmployerRequest;
 import com.demo.exception.BadRequestException;
 import com.demor.dto.CustomerDTO;
@@ -29,12 +29,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.demo.constant.Constants.CHANNEL;
+
 import static com.demo.constant.Constants.ERROR_INVALID_HEADERS;
-import static com.demo.constant.Constants.FLOW;
-import static com.demo.constant.Constants.PNR;
-import static com.demo.constant.Constants.STORE;
-import static com.demo.constant.Constants.X_TRANSACTION_ID;
+
 
 public class Util {
 

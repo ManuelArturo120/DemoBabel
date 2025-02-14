@@ -2,20 +2,12 @@ package com.demo.constant;
 
 public final class Constants {
 
-    //Headers
-    public static final String CHANNEL = "channel";
-    public static final String CHANNEL_DEFAULT = "web";
-    public static final String FLOW = "flow";
-    public static final String CONTENT_TYPE = "content-type";
-    public static final String STORE = "store";
-    public static final String X_TRANSACTION_ID = "x-transactionid";
-    public static final String PNR = "pnr";
 
     //Errors
     public static final String ERROR_INVALID_HEADERS = "This header(s) is (are) not present in application properties: ";
     public static final String INVALID_HEADERS = "INVALID_HEADERS";
 
-    public static final String THIRD_PARTY= "3RD_PARTY";
+    public static final String THIRD_PARTY= "";
     public static final String AUTHENTICATION_FAILED = "AUTHENTICATION_FAILED";
     public static final String SABRE_DISCONNECTION = "SABRE_DISCONNECTION";
     public static final String SABRE_UNAVAILABLE = "SABRE_UNAVAILABLE";

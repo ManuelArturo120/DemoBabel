@@ -29,7 +29,7 @@ public class SwaggerConfiguration {
 
             Contact contact = new Contact();
             contact.email("manuelarturo120@gmail.com");
-            contact.name("Phoenix Team");
+            contact.name("Manuyel Alvarado");
 
             License mitLicense = new License()
                     .name("Apache 2.0")
@@ -37,7 +37,7 @@ public class SwaggerConfiguration {
 
             Tag tag = new Tag()
                     .name("demoBbael")
-                    .description("microservicio BASE para la obtención de la oferta de maletas");
+                    .description("Api para ooperaciobn con informaciond e empleado");
 
             Info info = new Info()
                     .title(name)

@@ -39,7 +39,7 @@ public class LogUtilTest {
 	@Test
 	void printTransactionLog() throws IllegalArgumentException {
 
-		LogUtil.printTransactionLog("81e50faa-a9a0-4566-93ab-117f8b37b3df", Constants.THIRD_PARTY, "http://someurl.com", "{\"response\":\"dummy\"}", "{\"body\":\"dummy\"}", "GRTCHQ");
+		LogUtil.printTransactionLog( "{\"response\":\"dummy\"}", "{\"body\":\"dummy\"}");
 		assertEquals(getClass(), getClass());
 
 
@@ -48,7 +48,7 @@ public class LogUtilTest {
 	@Test
 	void printTransactionLog2() throws IllegalArgumentException {
 
-		LogUtil.printTransactionLog(null, "", null, "", "", "");
+		LogUtil.printTransactionLog( "", "");
 
 		assertEquals(getClass(), getClass());
 

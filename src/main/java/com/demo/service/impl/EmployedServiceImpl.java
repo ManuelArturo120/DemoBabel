@@ -45,7 +45,6 @@ public class EmployedServiceImpl implements  EmployedService {
 	}
 
 	@Override
-	@Transactional
 	public List<EmployeeResponse> addEmplotyed(List<EmployerRequest> employed)  throws InternalServerError, JsonProcessingException{
 		 try {
 		List<Employee> dao= repostory.saveAll(EmployeUtils.convertRequestToModel(employed));

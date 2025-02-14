@@ -24,7 +24,7 @@ import java.io.IOException;
 
 
 import static com.demo.constant.Constants.AUTHENTICATION_FAILED;
-import static com.demo.constant.Constants.CHANNEL_DEFAULT;
+
 
 import static com.demo.constant.Constants.DASH;
 
@@ -45,12 +45,13 @@ public class ControllerAdvisor {
 
 
 
+	
  
 
     @ExceptionHandler(value = { HttpMessageNotReadableException.class })
     protected ResponseEntity<Object> handleConstraintViolation(HttpMessageNotReadableException ex, HttpServletRequest httpServletRequest) throws IllegalArgumentException, IOException {
         DataForLogs dataForLogs = Util.buildDataForLogs(httpServletRequest);
-        LogUtil.printLogError(INVALID_REQUEST, dataForLogs.getUrlRequest(), LogUtil.buildLogResponse(STRING_EMPTY, ex.getMessage(), STRING_EMPTY, STRING_EMPTY), LogUtil.buildLogRequest(dataForLogs));
+        LogUtil.printLogError( LogUtil.buildLogResponse(STRING_EMPTY, ex.getMessage(), STRING_EMPTY, STRING_EMPTY), LogUtil.buildLogRequest(dataForLogs));
         return getResponseEntity( HttpStatus.BAD_REQUEST.getReasonPhrase().toUpperCase().replace(WHITE_SPACE,DASH), HttpStatus.BAD_REQUEST);
     }
 
@@ -60,7 +61,7 @@ public class ControllerAdvisor {
     @ExceptionHandler(value = { BadRequestException.class})
     protected ResponseEntity<Object> handleConstraintViolation(BadRequestException ex, HttpServletRequest httpServletRequest) throws IllegalArgumentException, IOException {
         DataForLogs dataForLogs = Util.buildDataForLogs(httpServletRequest);
-        LogUtil.printLogError( INVALID_HEADERS, dataForLogs.getUrlRequest(), LogUtil.buildLogResponse(STRING_EMPTY, ex.getInvalidHeaders(), STRING_EMPTY, STRING_EMPTY), LogUtil.buildLogRequest(dataForLogs, ex.getRequest()));
+        LogUtil.printLogError(  LogUtil.buildLogResponse(STRING_EMPTY, ex.getInvalidHeaders(), STRING_EMPTY, STRING_EMPTY), LogUtil.buildLogRequest(dataForLogs, ex.getRequest()));
         return getResponseEntity( HttpStatus.BAD_REQUEST.getReasonPhrase().toUpperCase().replace(WHITE_SPACE,DASH), HttpStatus.BAD_REQUEST);
     }
 
@@ -78,14 +79,14 @@ public class ControllerAdvisor {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleHttpMessageNotReadable(MethodArgumentNotValidException ex, HttpServletRequest httpServletRequest) throws IOException {
         DataForLogs dataForLogs = Util.buildDataForLogs(httpServletRequest);
-        LogUtil.printLogError( INVALID_REQUEST, dataForLogs.getUrlRequest(), LogUtil.buildLogResponse(STRING_EMPTY, ex.getMessage(), STRING_EMPTY, STRING_EMPTY), LogUtil.buildLogRequest(dataForLogs));
+        LogUtil.printLogError( LogUtil.buildLogResponse(STRING_EMPTY, ex.getMessage(), STRING_EMPTY, STRING_EMPTY), LogUtil.buildLogRequest(dataForLogs));
         return getResponseEntity( HttpStatus.BAD_REQUEST.getReasonPhrase().toUpperCase().replace(WHITE_SPACE,DASH), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(HandlerMethodValidationException.class)
     public ResponseEntity<Object> handlerMethodValidationException(HandlerMethodValidationException ex, HttpServletRequest httpServletRequest) throws IOException {
         DataForLogs dataForLogs = Util.buildDataForLogs(httpServletRequest);
-        LogUtil.printLogError( INVALID_REQUEST, dataForLogs.getUrlRequest(), LogUtil.buildLogResponse(STRING_EMPTY, ex.getMessage(), STRING_EMPTY, STRING_EMPTY), LogUtil.buildLogRequest(dataForLogs));
+        LogUtil.printLogError(  LogUtil.buildLogResponse(STRING_EMPTY, ex.getMessage(), STRING_EMPTY, STRING_EMPTY), LogUtil.buildLogRequest(dataForLogs));
         return getResponseEntity( HttpStatus.BAD_REQUEST.getReasonPhrase().toUpperCase().replace(WHITE_SPACE, DASH), HttpStatus.BAD_REQUEST);
     }
 
@@ -108,7 +109,7 @@ public class ControllerAdvisor {
 
     private ResponseEntity<Object> getObjectResponseEntity(HttpServletRequest httpServletRequest, String message) throws IOException {
         DataForLogs dataForLogs = Util.buildDataForLogs(httpServletRequest);
-        LogUtil.printLogError(INVALID_HEADERS, dataForLogs.getUrlRequest(), LogUtil.buildLogResponse(STRING_EMPTY, message, STRING_EMPTY, STRING_EMPTY), LogUtil.buildLogRequest(dataForLogs));
+        LogUtil.printLogError( LogUtil.buildLogResponse(STRING_EMPTY, message, STRING_EMPTY, STRING_EMPTY), LogUtil.buildLogRequest(dataForLogs));
         return getResponseEntity(HttpStatus.BAD_REQUEST.getReasonPhrase().toUpperCase().replace(WHITE_SPACE,DASH), HttpStatus.BAD_REQUEST);
     }
 
