@@ -34,8 +34,5 @@ public class LogStructure {
         return log.toString();
     }
 
-	public static String builder() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

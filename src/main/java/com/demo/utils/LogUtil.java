@@ -4,9 +4,9 @@ package com.demo.utils;
 
 import com.demor.dto.DataForLogs;
 
-
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringEscapeUtils;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,12 +33,11 @@ public class LogUtil {
         //To do nothing
     }
 
-    public static void printLogError(String transactionId, String logType, String url, String response, String body,
-                                     String reservationCode) throws IllegalArgumentException {
+    public static void printLogError(String logType, String url, String response, String body
+                                     ) throws IllegalArgumentException {
 
-        MDC.put(TRANSACTION_ID, transactionId);
         MDC.put(REQUEST, ObjectUtils.isEmpty(body) ? UNDEFINED : body);
-        MDC.put(PNR, reservationCode);
+      
         log.error(LOG_HEAD, StringUtils.isNotEmpty(logType) ? StringEscapeUtils.escapeJava(logType) : UNDEFINED,
                 StringUtils.isEmpty(MDC.get(TRANSACTION_ID)) ? UNDEFINED
                         : StringEscapeUtils.escapeJava(MDC.get(TRANSACTION_ID)),

@@ -21,7 +21,7 @@ public class EmployeeResponse implements Serializable{
 	public EmployeeResponse(Employee s) {
 		this.idEmployed = s.getIdEmployed();
 		this.age=s.getAge();
-		this.firtName= s.getFirtName();
+		this.firstName= s.getFirstName();
 		this.secondName= s.getSecondName();
 		this.paternalSurname= s.getPaternalSurname();
 		this.maternalSurname= s.getMaternalSurname();
@@ -35,8 +35,8 @@ public class EmployeeResponse implements Serializable{
 	private static final long serialVersionUID = 1L;
 	  @JsonProperty("idEmployed")
 	private long idEmployed;
-	  @JsonProperty("firtName")
-	private String firtName;
+	  @JsonProperty("firstName")
+	private String firstName;
 	  @JsonProperty("secondName")
 	private String secondName;
 	  @JsonProperty("paternalSurname")

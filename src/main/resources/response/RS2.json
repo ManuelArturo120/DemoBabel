@@ -1,0 +1,19 @@
+ [{
+    "firstName": "John",
+    "secondName": "Doe",
+    "paternalSurname": "Smith",
+    "maternalSurname": "Johnson",
+    "age": 30,
+    "gender": "Male",
+    "birthdate": "1995-05-12",
+    "position": "Software Engineer"
+  },{
+    "firtName": "John",
+    "secondName": "Doe",
+    "paternalSurname": "Smith",
+    "maternalSurname": "Johnson",
+    "age": 30,
+    "gender": "Male",
+    "birthdate": "1995-05-12",
+    "position": "Software Engineer"
+  }]

@@ -15,7 +15,7 @@ public class EmployeUtils {
 	        return requestList.stream()
 	                .map(s -> new Employee(
 	                		s.getAge(),
-	                		 s.getFirtName(),
+	                		s.getFirstName(),
 	                		 s.getSecondName(),
 	                		s.getPaternalSurname(),
 	                		s.getMaternalSurname(),
@@ -30,26 +30,24 @@ public class EmployeUtils {
 				    .map(s -> new EmployeeResponse(s)).collect(Collectors.toList());
 	  }
 	  
-	  public  void validUpdate(EmployerRequest request, Employee dao) {
+	  public void validUpdate(EmployerRequest request, Employee dao) {
 		    // Verificar la edad, si es 0, usar la del dao
-		  dao.setAge(request.getAge() != 0 ? request.getAge() : dao.getAge());
-		    
+		    dao.setAge(request.getAge() != 0 ? request.getAge() : dao.getAge());
+
 		    // Verificar campos de texto para nulos o vacíos
-		    dao.setFirtName (StringUtils.isNotEmpty(request.getFirtName()) ? request.getFirtName() : dao.getFirtName());
-		    dao.setSecondName( StringUtils.isNotEmpty(request.getSecondName()) ? request.getSecondName() : dao.getSecondName());
-		    dao.setPaternalSurname( StringUtils.isNotEmpty(request.getPaternalSurname()) ? request.getPaternalSurname() : dao.getPaternalSurname());
-		    dao.setMaternalSurname( StringUtils.isNotEmpty(request.getMaternalSurname()) ? request.getMaternalSurname() : dao.getMaternalSurname());
-		    
+		    dao.setFirstName(StringUtils.isNotEmpty(request.getFirstName()) ? request.getFirstName() : dao.getFirstName());
+		    dao.setSecondName(StringUtils.isNotEmpty(request.getSecondName()) ? request.getSecondName() : dao.getSecondName());
+		    dao.setPaternalSurname(StringUtils.isNotEmpty(request.getPaternalSurname()) ? request.getPaternalSurname() : dao.getPaternalSurname());
+		    dao.setMaternalSurname(StringUtils.isNotEmpty(request.getMaternalSurname()) ? request.getMaternalSurname() : dao.getMaternalSurname());
+
 		    // Verificar fecha de nacimiento
-		    dao.setBirthdate( request.getBirthdate() != null ? request.getBirthdate() : dao.getBirthdate());
-		    
+		    dao.setBirthdate(request.getBirthdate() != null ? request.getBirthdate() : dao.getBirthdate());
+
 		    // Verificar género
-		    dao.setGender( StringUtils.isNotEmpty(request.getGender()) ? request.getGender() : dao.getGender());
-		    
+		    dao.setGender(StringUtils.isNotEmpty(request.getGender()) ? request.getGender() : dao.getGender());
+
 		    // Verificar posición
 		    dao.setPosition(StringUtils.isNotEmpty(request.getPosition()) ? request.getPosition() : dao.getPosition());
-
-		    // Crear el empleado actualizado
 		}
 
 
