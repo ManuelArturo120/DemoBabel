@@ -10,7 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import com.demo.dto.request.EmployerRequest;
 import com.demo.dto.response.EmployeeResponse;
 import com.demo.entities.Employee;
-import com.demo.exception.DataBaseDisconnectionExcetion;
+import com.demo.exception.DataBaseDisconnectionException;
 import com.demo.exception.InternalServerError;
 import com.demo.repository.EmployedRepository;
 import com.demo.service.EmployedService;
@@ -35,7 +35,7 @@ public class EmployedServiceImpl implements  EmployedService {
 
 				List<Employee> dao =repostory.findAll();
 				 return EmployeUtils.converrtModelToResponse(dao);	    
-				 }catch( DataBaseDisconnectionExcetion ex) {
+				 }catch( DataBaseDisconnectionException ex) {
 	            throw ex;
 	        } catch (Exception e) {
 	            throw new InternalServerError(e,null);
@@ -50,7 +50,7 @@ public class EmployedServiceImpl implements  EmployedService {
 		 try {
 		List<Employee> dao= repostory.saveAll(EmployeUtils.convertRequestToModel(employed));
 		 return EmployeUtils.converrtModelToResponse(dao);
-			 }catch( DataBaseDisconnectionExcetion ex) {
+			 }catch( DataBaseDisconnectionException ex) {
 				 throw ex;
 			 } catch (Exception e) {
 		   throw new InternalServerError(e,employed.toString());
@@ -68,7 +68,7 @@ public class EmployedServiceImpl implements  EmployedService {
 
 	        	utils.validUpdate(employed, employee);
 	        	 return repostory.save(employee);
-			 }catch( DataBaseDisconnectionExcetion ex) {
+			 }catch( DataBaseDisconnectionException ex) {
 				 throw ex;
 			 } catch (Exception e) {
 		   throw new InternalServerError(e,employed.toString());

@@ -1,9 +1,12 @@
 package com.demor.dto;
 
 import static com.demo.constant.Constants.PIPE_SEPARATOR;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 @Builder
+@AllArgsConstructor
 public class LogStructure {
 
     private Object request;

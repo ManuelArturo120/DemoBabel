@@ -6,10 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.demo.util.UtilTest;
+import com.demor.dto.CustomerDTO;
 
 @SpringBootTest
 class CustomerDTOTest {
-	/* 
+	
     @Test
     void testSettersAndGetters() {
 
@@ -24,5 +25,5 @@ class CustomerDTOTest {
 
 
         Assertions.assertNotNull(underTest);
-    }*/
+    }
 }

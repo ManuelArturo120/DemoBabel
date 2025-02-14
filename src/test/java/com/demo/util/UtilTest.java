@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.demo.dto.request.EmployerRequest;
 import com.demo.dto.response.EmployeeResponse;
-
+import com.demor.dto.CustomerDTO;
 import com.google.gson.Gson;
 
 @SpringBootTest
@@ -63,21 +63,15 @@ public class UtilTest {
 	        }
 	        return resultStringBuilder.toString();
 	    }
+	    public static CustomerDTO getCustomerDTO(){
+	        CustomerDTO customerDTO= new CustomerDTO(null,null,null, null,null, null);
+	        customerDTO.setPnr("GRTCHQ");
+	        customerDTO.setFlow("myb");
+	        customerDTO.setChannel("web");
+	        customerDTO.setContentType("application/json");
+	        customerDTO.setStore("mx");
+	        customerDTO.setXTransactionId("62f19698-fc83-4401-af32-cc95d3ec7796");
 
-	    public static String getJsonToString2(String fileName)
-	            throws IOException {
-
-	        Class clazz = UtilTest.class;
-	        InputStream inputStream = clazz.getResourceAsStream(fileName);
-
-	        StringBuilder resultStringBuilder = new StringBuilder();
-	        try (BufferedReader br
-	                     = new BufferedReader(new InputStreamReader(inputStream))) {
-	            String line;
-	            while ((line = br.readLine()) != null) {
-	                resultStringBuilder.append(line).append("\n");
-	            }
-	        }
-	        return resultStringBuilder.toString();
+	        return customerDTO;
 	    }
 }

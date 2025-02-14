@@ -43,12 +43,9 @@ import static com.demo.constant.Constants.WHITE_SPACE;
 @ControllerAdvice
 public class ControllerAdvisor {
 
-    @Value("${app.error.id}")
-    private String appErrorId;
 
-    @Value("${sabre.endpoint}")
-    private String urlSabre;
 
+ 
 
     @ExceptionHandler(value = { HttpMessageNotReadableException.class })
     protected ResponseEntity<Object> handleConstraintViolation(HttpMessageNotReadableException ex, HttpServletRequest httpServletRequest) throws IllegalArgumentException, IOException {
@@ -69,6 +66,11 @@ public class ControllerAdvisor {
 
     @ExceptionHandler(InternalServerError.class)
     public ResponseEntity<Object> handleInternalServerError(InternalServerError ex, HttpServletRequest httpServletRequest) throws IOException {
+        DataForLogs dataForLogs = Util.buildDataForLogs(httpServletRequest);
+        return getResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase().toUpperCase().replace(WHITE_SPACE,DASH), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    @ExceptionHandler(DataBaseDisconnectionException.class)
+    public ResponseEntity<Object> handleDataBaseError(DataBaseDisconnectionException ex, HttpServletRequest httpServletRequest) throws IOException {
         DataForLogs dataForLogs = Util.buildDataForLogs(httpServletRequest);
         return getResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase().toUpperCase().replace(WHITE_SPACE,DASH), HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -110,8 +112,9 @@ public class ControllerAdvisor {
         return getResponseEntity(HttpStatus.BAD_REQUEST.getReasonPhrase().toUpperCase().replace(WHITE_SPACE,DASH), HttpStatus.BAD_REQUEST);
     }
 
+    
     private ResponseEntity<Object> getResponseEntity(String reason, HttpStatus httpStatus){
-        return new ResponseEntity<>(new ErrorMessage( appErrorId+ reason, httpStatus.value()), httpStatus);
+        return new ResponseEntity<>(new ErrorMessage(  reason, httpStatus.value()), httpStatus);
     }
     
 }

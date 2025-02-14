@@ -40,13 +40,10 @@ public final class Constants {
     public static final String PIPE_SEPARATOR = " | ";
 
     //Sabre
-    public static final String SABRE_WS = "SabreWS";
-    public static final String SABRE_CONVERSATION_ID = "99999999";
     public static final String EMPTY_RESPONSE = "Empty Response";
 
     public static final String UNDEFINED = "undefined";
 
-    public static final String CITY_COMMAND = "AAA";
 
     public static final String BODY_TAG_START = ">, <body = ";
     public static final String PARAMS_QRY_NA = "<params= N/A>, <query = N/A>";

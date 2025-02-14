@@ -1,5 +1,6 @@
 package com.demo.exception;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,7 +8,9 @@ import lombok.Setter;
 @Setter
 public class BadRequestException extends RuntimeException {
 
-    public String getInvalidHeaders() {
+
+
+	public String getInvalidHeaders() {
 		return invalidHeaders;
 	}
 

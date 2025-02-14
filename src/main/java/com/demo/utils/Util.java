@@ -72,12 +72,6 @@ public class Util {
 
             return dataForLogs;
     }
-    public static DataForLogs toStringRQ(CustomerDTO validCustomerDTO) throws IOException {
-
-        DataForLogs dataForLogs = new DataForLogs();
-
-             return dataForLogs;
-    }
 
 
 
